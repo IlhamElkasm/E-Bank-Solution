@@ -14,7 +14,7 @@ import lombok.Setter;
 public class compte {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCompte;
     private String type_compte;
     private Float Solde_initial;

@@ -1,6 +1,7 @@
 package com.bank.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,12 +18,13 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
     private String Name;
     private String Email;
     private  String Password;
 
+    @JsonIgnore
     @OneToMany(mappedBy="user")
     private Set<compte> comptes;
 }
