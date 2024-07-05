@@ -19,6 +19,7 @@ public class CompteServiceIM implements Compteservice {
     @Autowired
     private userDAO userdao;
 
+    @Override
     public compte creerCompte(String typeCompte, Float soldeInitial, String dateCreation, int idUser) {
         User user = userdao.findById(idUser)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -37,5 +38,5 @@ public class CompteServiceIM implements Compteservice {
         return comptedao.findAll();
     }
 
-    public 
+
 }

@@ -1,10 +1,13 @@
 package com.bank.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,4 +26,8 @@ public class compte {
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
     private User user;
+
+   @JsonIgnore
+   @OneToMany(mappedBy="compte")
+    private Set<Transaction> transactions;
 }

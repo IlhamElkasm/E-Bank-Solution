@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface compteDAO  extends JpaRepository<compte, Integer> {
 
-        List<compte> findCompteBySold(Float Solde_initial);
 }
