@@ -12,5 +12,5 @@ public interface Compteservice {
                        int idUser);
 
     List<compte> getAllComptes();
+    double getCompteSold(int idCompte);
 }
-

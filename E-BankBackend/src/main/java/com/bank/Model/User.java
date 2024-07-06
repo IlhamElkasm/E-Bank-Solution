@@ -27,4 +27,8 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy="user")
     private Set<compte> comptes;
+
+    @JsonIgnore
+    @OneToMany(mappedBy="user")
+    private Set<Carte> cartes;
 }

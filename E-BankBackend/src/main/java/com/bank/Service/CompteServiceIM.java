@@ -38,5 +38,11 @@ public class CompteServiceIM implements Compteservice {
         return comptedao.findAll();
     }
 
+    @Override
+    public double getCompteSold(int idCompte) {
+        compte compte = comptedao.getReferenceById(idCompte);
+
+        return compte.getSolde_initial();
+    }
 
 }

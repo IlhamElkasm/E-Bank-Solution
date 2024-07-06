@@ -55,4 +55,5 @@ class EBankBackendApplicationTests {
 		assertEquals(Date_creation, creerCompte.getDate_creation());
 		assertEquals(idUser, creerCompte.getUser().getIdUser());
 	}
+
 }

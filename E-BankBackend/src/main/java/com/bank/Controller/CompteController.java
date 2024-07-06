@@ -30,5 +30,10 @@ public class CompteController {
         return compteService.creerCompte(type_compte, Solde_initial, Date_creation, idUser);
     }
 
+    @GetMapping("/{idCompte}")
+    public double getCompteSold(@PathVariable int idCompte) {
+        return compteService.getCompteSold(idCompte);
+    }
+
 
 }
