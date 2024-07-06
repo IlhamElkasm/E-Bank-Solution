@@ -10,4 +10,6 @@ public interface CarteService {
                        String Type_carte,
                        int idUser);
     List<Carte> getAllCarte();
+    void activerCarte(int idCarte);
+    void desactiverCarte(int idCarte);
 }
