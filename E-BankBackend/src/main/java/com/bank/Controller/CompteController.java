@@ -35,5 +35,14 @@ public class CompteController {
         return compteService.getCompteSold(idCompte);
     }
 
+    @PostMapping("/fermer")
+    public String fermerCompte(@RequestBody Map<String, Object> payload) {
+        int idCompte = ((Number) payload.get("idCompte")).intValue();
+        String raisonFermeture = (String) payload.get("raisonFermeture");
+
+        compteService.fermerCompte(idCompte, raisonFermeture);
+
+        return "Compte fermé avec succès";
+    }
 
 }

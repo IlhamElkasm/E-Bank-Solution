@@ -22,6 +22,7 @@ public class compte {
     private String type_compte;
     private Float Solde_initial;
     private String Date_creation;
+    private  boolean Fermee;
 
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)

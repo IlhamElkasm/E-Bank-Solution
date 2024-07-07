@@ -13,4 +13,5 @@ public interface Compteservice {
 
     List<compte> getAllComptes();
     double getCompteSold(int idCompte);
+    void fermerCompte(int idCompte, String raisonFermeture);
 }

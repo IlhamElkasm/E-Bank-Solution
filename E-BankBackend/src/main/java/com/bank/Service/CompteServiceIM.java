@@ -45,4 +45,17 @@ public class CompteServiceIM implements Compteservice {
         return compte.getSolde_initial();
     }
 
+    @Override
+    public void fermerCompte(int idCompte, String raisonFermeture) {
+        compte compte = comptedao.findById(idCompte)
+                .orElseThrow(() -> new RuntimeException("Compte not found"));
+
+        // Logique pour fermer le compte
+        System.out.println("Fermeture du compte avec ID: " + idCompte);
+        System.out.println("Raison de la fermeture: " + raisonFermeture);
+
+        compte.setFermee(true);
+        comptedao.save(compte);
+    }
+
 }
