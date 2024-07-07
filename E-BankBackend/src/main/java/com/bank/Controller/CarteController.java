@@ -32,5 +32,17 @@ public class CarteController {
 
         return carteService.creerCart(numero_carte, date_dexpiration, Type_carte, idUser);
     }
-    
+
+
+    @PostMapping("/{idCarte}/activer")
+    public String activerCarte(@PathVariable int idCarte) {
+        carteService.activerCarte(idCarte);
+        return "activated";
+    }
+
+    @PostMapping("/{idCarte}/desactivated")
+    public String desactiverCarte(@PathVariable int idCarte) {
+        carteService.desactiverCarte(idCarte);
+        return "desactivated";
+    }
 }

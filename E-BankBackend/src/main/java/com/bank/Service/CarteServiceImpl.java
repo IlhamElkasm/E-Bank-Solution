@@ -41,7 +41,8 @@ public class CarteServiceImpl implements CarteService {
         Carte carte = cartedao.findById(idCarte).
                 orElseThrow(() -> new RuntimeException("Compte not found"));
         if (carte != null) {
-                cartedao.ActiveCarte(idCarte);
+                carte.setActive(true);
+                cartedao.save(carte);
         } else {
             throw new RuntimeException("Carte non trouvée.");
         }
@@ -50,6 +51,13 @@ public class CarteServiceImpl implements CarteService {
 
     @Override
     public void desactiverCarte(int idCarte) {
-
+        Carte carte = cartedao.findById(idCarte).
+                orElseThrow(() -> new RuntimeException("Compte not found"));
+        if (carte != null) {
+            carte.setActive(false);
+            cartedao.save(carte);
+        } else {
+            throw new RuntimeException("Carte non trouvée.");
+        }
     }
 }

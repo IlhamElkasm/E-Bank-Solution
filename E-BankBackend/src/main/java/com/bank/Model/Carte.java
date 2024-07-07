@@ -18,7 +18,7 @@ public class Carte {
     private String numero_carte;
     private String date_dexpiration;
     private String Type_carte;
-
+    private boolean active;
 
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
