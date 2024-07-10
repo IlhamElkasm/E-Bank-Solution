@@ -26,7 +26,7 @@ public class compte {
 
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
-    private User user;
+    private utilisateur user;
 
    @JsonIgnore
    @OneToMany(mappedBy="compte")

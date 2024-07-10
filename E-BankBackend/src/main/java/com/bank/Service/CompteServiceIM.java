@@ -2,13 +2,14 @@ package com.bank.Service;
 
 import com.bank.Dao.compteDAO;
 import com.bank.Dao.userDAO;
-import com.bank.Model.User;
+import com.bank.Model.utilisateur;
 import com.bank.Model.compte;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompteServiceIM implements Compteservice {
@@ -19,9 +20,11 @@ public class CompteServiceIM implements Compteservice {
     @Autowired
     private userDAO userdao;
 
+    private  compteDAO daoC;
+
     @Override
     public compte creerCompte(String typeCompte, Float soldeInitial, String dateCreation, int idUser) {
-        User user = userdao.findById(idUser)
+        utilisateur user = userdao.findById(idUser)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         compte compte = new compte();
@@ -58,4 +61,11 @@ public class CompteServiceIM implements Compteservice {
         comptedao.save(compte);
     }
 
+
+    public void Transaction(String Montant, int idCompte){
+
+        Optional<compte> compte = daoC.findById(idCompte);
+
+
+    }
 }

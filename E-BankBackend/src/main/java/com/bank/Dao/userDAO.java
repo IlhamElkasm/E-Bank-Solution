@@ -1,7 +1,11 @@
 package com.bank.Dao;
 
-import com.bank.Model.User;
+import com.bank.Model.utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface userDAO  extends JpaRepository<User, Integer> {
+import java.util.Optional;
+
+public interface userDAO  extends JpaRepository<utilisateur, Integer> {
+
+    Optional<utilisateur> findByEmail(String Email);
 }

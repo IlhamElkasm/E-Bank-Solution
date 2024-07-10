@@ -3,8 +3,7 @@ package com.bank.Service;
 import com.bank.Dao.carteDAO;
 import com.bank.Dao.userDAO;
 import com.bank.Model.Carte;
-import com.bank.Model.User;
-import com.bank.Model.compte;
+import com.bank.Model.utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ public class CarteServiceImpl implements CarteService {
     private userDAO userdao;
     @Override
     public Carte creerCart(String numero_carte, String date_dexpiration, String Type_carte, int idUser) {
-        User user = userdao.findById(idUser)
+        utilisateur user = userdao.findById(idUser)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Carte carte = new Carte();
