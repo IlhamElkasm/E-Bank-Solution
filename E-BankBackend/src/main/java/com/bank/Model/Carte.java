@@ -22,6 +22,6 @@ public class Carte {
 
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)
-    private utilisateur user;
+    private User user;
 
 }

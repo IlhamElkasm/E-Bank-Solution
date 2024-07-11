@@ -2,7 +2,7 @@ package com.bank.Service;
 
 import com.bank.Dao.compteDAO;
 import com.bank.Dao.userDAO;
-import com.bank.Model.utilisateur;
+import com.bank.Model.User;
 import com.bank.Model.compte;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class CompteServiceIM implements Compteservice {
 
     @Override
     public compte creerCompte(String typeCompte, Float soldeInitial, String dateCreation, int idUser) {
-        utilisateur user = userdao.findById(idUser)
+        User user = userdao.findById(idUser)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         compte compte = new compte();

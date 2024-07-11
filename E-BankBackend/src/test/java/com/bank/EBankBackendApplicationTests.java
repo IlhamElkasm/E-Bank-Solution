@@ -2,7 +2,7 @@ package com.bank;
 
 import com.bank.Dao.compteDAO;
 import com.bank.Model.compte;
-import com.bank.Model.utilisateur;
+import com.bank.Model.User;
 import com.bank.Service.CompteServiceIM;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ class EBankBackendApplicationTests {
 		int idUser = 1;
 
 		// Mock the User object
-		utilisateur mockUser = new utilisateur();
+		User mockUser = new User();
 		mockUser.setIdUser(idUser);
 
 		// Mock the compte object to return the mockUser

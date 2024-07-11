@@ -3,32 +3,29 @@ package com.bank.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
+@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class utilisateur implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
     private String Name;
-    private String Email;
-    private  String Password;
+    private String email;
+    @Column(name= "password", nullable = false)
+    private  String password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -48,12 +45,12 @@ public class utilisateur implements UserDetails {
 
     @Override
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return Email;
+        return email;
     }
 
     @Override
