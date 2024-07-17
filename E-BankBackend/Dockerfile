@@ -1,4 +1,4 @@
 FROM openjdk:17
-EXPOSE 8082
-ADD target/ebankapp.jar ebankapp.jar
-ENTRYPOINT ["java", "-jar", "/ebankapp.jar"]
+EXPOSE 8080
+ADD /target/ebankapp.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]

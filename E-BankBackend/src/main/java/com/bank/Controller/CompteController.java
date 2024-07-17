@@ -20,6 +20,8 @@ public class CompteController {
     public List<compte> getAllComptes() {
         return compteService.getAllComptes();
     }
+
+
     @PostMapping("/creat")
     public compte creerCompte(@RequestBody Map<String, Object> payload) {
         String type_compte = (String) payload.get("type_compte");
