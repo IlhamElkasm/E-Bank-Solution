@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Jwt } from '../module/Jwt';
 
 const url = ["http://localhost:8084/api/v1/auth/"]
 
@@ -11,10 +12,26 @@ export class JwtService {
 
   constructor(private http: HttpClient) { }
 
-  register(singRequest:any): Observable<any>{
-    return this.http.post(url+'register', singRequest)
+  register(singRequest:any): Observable<Jwt>{
+    return this.http.post<Jwt>(url+'register', singRequest)
   }
-  login(loginRequest:any): Observable<any>{
-    return this.http.post(url+'authenticate', loginRequest)
+  login(loginRequest:any): Observable<Jwt>{
+    return this.http.post<Jwt>(url+'authenticate', loginRequest)
   }
+  sayHello(): Observable<any> {
+    const headers = this.createAuthorizationHeader();
+    return this.http.get(url + 'demo', { headers });
+  }
+  
+  private createAuthorizationHeader(): HttpHeaders | undefined {
+    const jwtToken = localStorage.getItem('jwt');
+    if (jwtToken) {
+      console.log("JWT token found in local storage", jwtToken);
+      return new HttpHeaders().set("Authorization", "Bearer " + jwtToken);
+    } else {
+      console.log("JWT token not found in local storage");
+      return undefined;
+    }
+  }
+  
 }

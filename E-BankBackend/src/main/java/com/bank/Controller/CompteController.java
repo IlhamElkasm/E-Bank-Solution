@@ -11,6 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/compte")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class CompteController {
 
     @Autowired
@@ -32,10 +33,10 @@ public class CompteController {
         return compteService.creerCompte(type_compte, Solde_initial, Date_creation, idUser);
     }
 
-//    @GetMapping("/{idCompte}")
-//    public double getCompteSold(@PathVariable int idCompte) {
-//        return compteService.getCompteSold(idCompte);
-//    }
+    @GetMapping("/{idCompte}")
+    public double getCompteSold(@PathVariable int idCompte) {
+        return compteService.getCompteSold(idCompte);
+    }
 
     @PostMapping("/fermer")
     public String fermerCompte(@RequestBody Map<String, Object> payload) {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import { Jwt } from 'src/app/module/Jwt';
 import { JwtService } from 'src/app/service/jwt.service';
 
 @Component({
@@ -10,10 +12,11 @@ import { JwtService } from 'src/app/service/jwt.service';
 export class LoginComponent implements OnInit{
 
   loginForm!: FormGroup;
-  router: any;
   constructor(
     private service: JwtService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
+  
   ){}
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -21,14 +24,13 @@ export class LoginComponent implements OnInit{
       password: ['', [Validators.required]],
     })
   }
-  submitForm() {
+  submitForm(): void {
     console.log(this.loginForm.value);
-    this.service.register(this.loginForm.value).subscribe(
-      (response) => {
-          console.log(response)
-          if (response.jwt != null) {
-            alert("Hello, Your token is " + response.jwt);
-          }
+    this.service.login(this.loginForm.value).subscribe(
+      (response : Jwt) => {
+            const jwToken = response.token;
+            localStorage.setItem('jwt', jwToken);
+           this.router.navigateByUrl("/dashboard")
         }
     )
   }
