@@ -20,9 +20,9 @@ public class compte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCompte;
     private String type_compte;
-    private Float Solde_initial;
-    private String Date_creation;
-    private  boolean Fermee;
+    private Float solde_initial;
+    private String date_creation;
+    private  boolean fermee;
 
     @ManyToOne
     @JoinColumn(name="idUser", nullable=false)

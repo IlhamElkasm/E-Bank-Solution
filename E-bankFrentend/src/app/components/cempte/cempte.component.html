@@ -1,18 +1,23 @@
-<div class="container">
-    <div class="row">
-      <div *ngFor="let compte of compte" class="col-md-4">
-        <div class="card mb-4">
-          <img src="assets/img/2.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ compte.type_compte }}</h5>
-            <p class="card-text">{{ compte.Solde_initial }}</p>
-            <p class="card-text">{{ compte.Date_creation }}</p>
-            <div class="card-body">
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<div class="compte-container">
+  <h1>Liste des Comptes</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Type de Compte</th>
+        <th>Solde Initial</th>
+        <th>Date de Création</th>
+        <th>Fermee</th>
+        <th>ID Utilisateur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let compte of comptes">
+        <td>{{ compte.type_compte }}</td>
+        <td>{{ compte.solde_initial }}</td>
+        <td>{{ compte.date_creation }}</td>
+        <td>{{ compte.fermee }}</td>
+        <td>{{ compte.user.idUser }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

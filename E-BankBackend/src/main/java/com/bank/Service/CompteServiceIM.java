@@ -23,14 +23,14 @@ public class CompteServiceIM implements Compteservice {
     private  compteDAO daoC;
 
     @Override
-    public compte creerCompte(String typeCompte, Float soldeInitial, String dateCreation, int idUser) {
+    public compte creerCompte(String typeCompte, Float solde_initial, String date_creation, int idUser) {
         User user = userdao.findById(idUser)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         compte compte = new compte();
         compte.setType_compte(typeCompte);
-        compte.setSolde_initial(soldeInitial);
-        compte.setDate_creation(dateCreation);
+        compte.setSolde_initial(solde_initial);
+        compte.setDate_creation(date_creation);
         compte.setUser(user); // Associer l'utilisateur au compte
 
         return comptedao.save(compte);

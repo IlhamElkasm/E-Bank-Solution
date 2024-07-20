@@ -8,6 +8,7 @@ import { JwtService } from 'src/app/service/jwt.service';
 })
 export class DashboardComponent {
 
+  message! : string;
   constructor(
     private service: JwtService
   ){}
@@ -19,6 +20,7 @@ export class DashboardComponent {
     this.service.sayHello().subscribe(
       (response) =>{
         console.log(response);
+        this.message = response.message;
       }
     )
   }

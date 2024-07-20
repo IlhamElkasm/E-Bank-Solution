@@ -26,8 +26,9 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/auth/demo").authenticated()
-                        .anyRequest()
+//                        .requestMatchers("/api/v1/auth/demo").authenticated()
+                       .requestMatchers("/api/compte/**").authenticated() // Authentification requise pour les points de terminaison du compte
+                                .anyRequest()
                         .authenticated()
                 )
                 .sessionManagement(session -> session

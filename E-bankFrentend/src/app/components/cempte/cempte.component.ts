@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Compte } from 'src/app/module/compte';
 import { CompteService } from 'src/app/service/compte.service';
 
@@ -10,19 +9,22 @@ import { CompteService } from 'src/app/service/compte.service';
 })
 export class CempteComponent implements OnInit {
 
-  
-  compte : Compte[]= [];
+  comptes: Compte[] = [];
 
-  constructor(private serviceCompte:  CompteService,
-    private router : Router ){}
+  constructor(private compteService: CompteService) {}
+
   ngOnInit(): void {
-    this.getCompte();
+    this.getComptes();
   }
 
-  private getCompte(){
-    this.serviceCompte.getCompte().subscribe(data =>
-      {
-        this.compte= data;
-      });
+  getComptes(): void {
+    this.compteService.getComptes().subscribe(
+      (response) => {
+        this.comptes = response;
+      },
+      (error) => {
+        console.error("Error occurred while fetching comptes", error);
+      }
+    );
   }
 }

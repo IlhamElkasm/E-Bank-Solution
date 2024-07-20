@@ -1,5 +1,6 @@
 package com.bank.Controller;
 
+import com.bank.Model.UserResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class userController {
 
     @GetMapping("/demo")
-    public ResponseEntity<String> sayHello(){
+    public UserResponse sayHello(){
 
-        return ResponseEntity.ok("Hello from secured endpoint");
+        return new UserResponse("message");
     }
 }

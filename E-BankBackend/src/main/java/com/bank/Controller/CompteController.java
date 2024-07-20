@@ -26,11 +26,11 @@ public class CompteController {
     @PostMapping("/creat")
     public compte creerCompte(@RequestBody Map<String, Object> payload) {
         String type_compte = (String) payload.get("type_compte");
-        Float Solde_initial = ((Number) payload.get("Solde_initial")).floatValue();
-        String Date_creation = (String) payload.get("Date_creation");
+        Float solde_initial = ((Number) payload.get("solde_initial")).floatValue();
+        String date_creation = (String) payload.get("date_creation");
         int idUser = ((Number) payload.get("idUser")).intValue();
 
-        return compteService.creerCompte(type_compte, Solde_initial, Date_creation, idUser);
+        return compteService.creerCompte(type_compte, solde_initial, date_creation, idUser);
     }
 
     @GetMapping("/{idCompte}")
