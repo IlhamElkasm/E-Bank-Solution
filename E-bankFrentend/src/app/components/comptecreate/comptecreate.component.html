@@ -1,0 +1,26 @@
+<div class="compte-container">
+    <mat-card>
+      <h1>Créer un Compte</h1>
+      <form (ngSubmit)="creerCompte()" #compteForm="ngForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Type de Compte</mat-label>
+          <input matInput type="text" id="type_compte" [(ngModel)]="compte.type_compte" name="type_compte" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Solde Initial</mat-label>
+          <input matInput type="number" id="solde_initial" [(ngModel)]="compte.solde_initial" name="solde_initial" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Date de Création</mat-label>
+          <input matInput type="date" id="date_creation" [(ngModel)]="compte.date_creation" name="date_creation" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>ID Utilisateur</mat-label>
+          <input matInput type="number" id="idUser" [(ngModel)]="compte.idUser" name="idUser" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Ajouter Compte</button>
+      </form>
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    </mat-card>
+  </div>
+  

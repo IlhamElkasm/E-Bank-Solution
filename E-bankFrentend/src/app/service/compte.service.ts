@@ -17,6 +17,11 @@ export class CompteService {
     return this.http.get<Compte[]>(`${this.apiUrl}/affiche`, { headers });
   }
 
+  creerCompte(compte: Compte): Observable<Compte> {
+    const headers = this.createAuthorizationHeader();
+    return this.http.post<Compte>(`${this.apiUrl}/creat`, compte, { headers });
+  }
+
   private createAuthorizationHeader(): HttpHeaders | undefined {
     const jwtToken = localStorage.getItem('jwt');
     if (jwtToken) {

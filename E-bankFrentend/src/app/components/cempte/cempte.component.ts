@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Compte } from 'src/app/module/compte';
 import { CompteService } from 'src/app/service/compte.service';
 
@@ -10,8 +11,9 @@ import { CompteService } from 'src/app/service/compte.service';
 export class CempteComponent implements OnInit {
 
   comptes: Compte[] = [];
+dataSource: any;
 
-  constructor(private compteService: CompteService) {}
+  constructor(private compteService: CompteService, private router: Router) {}
 
   ngOnInit(): void {
     this.getComptes();
